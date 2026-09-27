@@ -30,5 +30,4 @@ jobs:
       - name: Deploy (CD)
         shell: powershell
         run: |
-          wsl chmod +x ./app.sh
-          wsl ./app.sh
+          wsl chmod +x /mnt/c/Users/PRABHAT/DevOpsCICDProject/app.sh
