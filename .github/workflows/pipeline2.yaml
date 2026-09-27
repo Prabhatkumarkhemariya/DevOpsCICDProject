@@ -22,7 +22,7 @@ jobs:
 
         run: echo "Build success"
   Test:
-    needs: Build
+    #needs: Build
     runs-on: self-hosted
     steps:
       #- name: Checkout Code
@@ -30,7 +30,7 @@ jobs:
       - name: Test
         run: echo "Tests passed"
   Deploy:
-    needs: Test
+    #needs: Test
     runs-on: self-hosted
     steps:
      # - name: checkout Code
