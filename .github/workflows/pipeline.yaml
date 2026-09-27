@@ -16,7 +16,7 @@ jobs:
 
       # 2. Login to Docker Hub
       - name: Docker Login
-        run: docker login -u "praabhatkumar1991" -p "dckr_pat_6hL-lfY6ShrtoHbO8gCSj1GmeSg"
+        run: docker login -u "praabhatkumar1991" -p "8943268r6csjGCuar789"
 
       # 3. Build Docker image
       - name: Build Docker Image
