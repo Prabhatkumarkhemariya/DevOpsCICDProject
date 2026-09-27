@@ -30,4 +30,4 @@ jobs:
       - name: Deploy (CD)
         shell: powershell
         run: |
-          wsl -d Ubuntu -- chmod +x /mnt/c/Devops_training/DevOpsCICDProject/actions-runner/_work/DevOpsCICDProject/DevOpsCICDProject/app.sh
+          wsl -d Ubuntu -- chmod +x /mnt/c/Devops_training/DevOpsCICDProject/actions-runner2/_work/DevOpsCICDProject/DevOpsCICDProject/app2.py
