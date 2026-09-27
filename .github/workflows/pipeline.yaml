@@ -27,7 +27,8 @@ jobs:
         run: echo "Tests passed"
  
       # Step 4: Deploy using WSL
-
       - name: Deploy (CD)
-
-        run: echo "deployment successful"
+        shell: powershell
+        run: |
+          wsl chmod +x ./app.sh
+          wsl ./app.sh
