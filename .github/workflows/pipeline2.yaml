@@ -8,7 +8,7 @@ on:
  
 jobs:
 
-  ci-build:
+  Build:
 
     runs-on: self-hosted
  
@@ -21,15 +21,20 @@ jobs:
       - name: Build
 
         run: echo "Build success"
-  ci-test:
+  Test:
+    needs: Build
     runs-on: self-hosted
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
       - name: Test
-
         run: echo "Tests passed"
-  c-deploy:
+  Deploy:
+    needs: Test
     runs-on: self-hosted
     steps:
+      - name: checkout Code
+        uses: actions/checkout@v4
       - name: Deploy (CD)
         shell: powershell
         run: |
