@@ -30,4 +30,12 @@ jobs:
       - name: Deploy (CD)
         shell: powershell
         run: |
-          wsl chmod +x /c/Users/PRABHAT/DevOpsCICDProject/app.sh
+          Write-Host "GitHub Workspace:"
+          Write-Host $env:GITHUB_WORKSPACE
+
+          $wslPath = wsl wslpath "$env:GITHUB_WORKSPACE"
+
+          Write-Host "WSL Workspace:"
+          Write-Host $wslPath
+
+          wsl bash -c "cd '$wslPath' && ls -l && chmod +x app.sh && ./app.sh"
