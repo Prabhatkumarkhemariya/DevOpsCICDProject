@@ -1,33 +1,54 @@
-name: CI-CD Pipeline
- 
+name: Local CI-CD Pipeline
+
 on:
-
   push:
-
     branches: [ main ]
- 
+
 jobs:
-
-  ci-cd:
-
+  deploy:
     runs-on: self-hosted
- 
+
     steps:
 
+      # 1. Checkout source code
       - name: Checkout Code
-
         uses: actions/checkout@v4
- 
-      - name: Build
 
-        run: echo "Build success"
- 
-      - name: Test
-
-        run: echo "Tests passed"
- 
-      # Step 4: Deploy using WSL
-      - name: Deploy (CD)
-        shell: powershell
+      # 2. Login to Docker Hub
+      - name: Docker Login
         run: |
-          wsl -d Ubuntu -- python3 /mnt/c/Devops_training/DevOpsCICDProject/actions-runner2/_work/DevOpsCICDProject/DevOpsCICDProject/app2.py
+          echo "${{ secrets.DOCKER_PASSWORD }}" | \
+          docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      # 3. Build Docker image
+      - name: Build Docker Image
+        run: |
+          docker build -t praabhatkumar1991/devops-app:${{ github.run_number }} .
+
+      # 4. Push Docker image to Docker Hub
+      - name: Push Docker Image
+        run: |
+          docker push praabhatkumar1991/devops-app:${{ github.run_number }}
+
+      # 5. Update Kubernetes deployment with new image
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/devops-app \
+            devops-app=praabhatkumar1991/devops-app:${{ github.run_number }}
+
+      # 6. Wait until rollout is completed
+      - name: Wait for Deployment
+        run: |
+          kubectl rollout status deployment/devops-app --timeout=120s
+
+      # 7. Verify deployment and pods
+      - name: Verify Kubernetes Deployment
+        run: |
+          echo "===== Deployment ====="
+          kubectl get deployment devops-app
+
+          echo "===== Pods ====="
+          kubectl get pods -o wide
+
+          echo "===== Services ====="
+          kubectl get svc
