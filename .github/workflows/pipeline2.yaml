@@ -25,16 +25,16 @@ jobs:
     needs: Build
     runs-on: self-hosted
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      #- name: Checkout Code
+       # uses: actions/checkout@v4
       - name: Test
         run: echo "Tests passed"
   Deploy:
     needs: Test
     runs-on: self-hosted
     steps:
-      - name: checkout Code
-        uses: actions/checkout@v4
+     # - name: checkout Code
+      #  uses: actions/checkout@v4
       - name: Deploy (CD)
         shell: powershell
         run: |
