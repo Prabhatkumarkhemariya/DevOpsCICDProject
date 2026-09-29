@@ -13,6 +13,16 @@ jobs:
       # 1. Checkout source code
       - name: Checkout Code
         uses: actions/checkout@v4
+      - name: Check Workspace
+        run: |
+          Write-Host "Current directory:"
+          Get-Location
+
+          Write-Host "Files in current directory:"
+          Get-ChildItem
+
+          Write-Host "Searching for Dockerfile:"
+          Get-ChildItem -Path . -Filter Dockerfile -Recurse
 
       # 2. Login to Docker Hub
       - name: Docker Login
