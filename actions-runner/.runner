@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 23,
+  "agentName": "DESKTOP-23LSEBQ",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus5.actions.githubusercontent.com/mm6oqhgtxdmufdvalzOEbY43YRoioivgsXTjX2UQBxioQQHEGA/",
+  "gitHubUrl": "https://github.com/Prabhatkumarkhemariya/DevOpsCICDProject",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}

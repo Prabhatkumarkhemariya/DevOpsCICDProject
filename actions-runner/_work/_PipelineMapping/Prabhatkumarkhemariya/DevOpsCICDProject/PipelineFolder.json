@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "Prabhatkumarkhemariya/DevOpsCICDProject",
+  "pipelineDirectory": "DevOpsCICDProject",
+  "workspaceDirectory": "DevOpsCICDProject\\DevOpsCICDProject",
+  "repositories": {
+    "Prabhatkumarkhemariya/DevOpsCICDProject": {
+      "repositoryPath": "DevOpsCICDProject\\DevOpsCICDProject",
+      "lastRunOn": "09/29/2026 08:27:11 +05:30"
+    }
+  },
+  "lastRunOn": "09/30/2026 16:18:13 +05:30"
+}
